@@ -1,0 +1,67 @@
+aid: judge-me
+name: Judge.me
+review:
+  question: Does Judge.me expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-25'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Judge.me exposes a synchronous REST API
+    and outbound webhooks (server-to-server HTTP POST callbacks). It does not
+    document any WebSocket, Server-Sent Events, or other persistent streaming
+    transport, so there is no event-streaming surface to model in AsyncAPI
+    under the current API Evangelist scope.
+findings:
+  summary: |
+    Judge.me does not publish a documented public WebSocket API. The platform
+    exposes a REST (HTTPS) API under https://judge.me/api/v1, authenticated with
+    a shop_domain and a public or private api_token passed as query parameters.
+    Asynchronous notifications are delivered via outbound webhooks - Judge.me
+    sends HTTP POST requests to a subscriber URL on review lifecycle events
+    (review/created, review/updated, review/published, review/unpublished) and
+    widget settings updates - not over a WebSocket. No realtime, bidirectional,
+    or streaming WebSocket (ws:// or wss://) endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://judge.me/api/v1
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound HTTP POST callbacks to a subscriber URL on review and widget events, with an HMAC signature for verification. Server-to-server, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Judge.me's API reference, help center, or OAuth docs as of the review date.
+  endpointsConfirmedRest:
+    - GET  https://judge.me/api/v1/reviews
+    - POST https://judge.me/api/v1/reviews
+    - GET  https://judge.me/api/v1/products/-1
+    - GET  https://judge.me/api/v1/widgets/product_review
+    - GET  https://judge.me/api/v1/widgets/preview_badge
+    - POST https://judge.me/api/v1/orders/send_manual_review_request
+    - GET  https://app.judge.me/oauth/authorize
+    - POST https://judge.me/oauth/token
+sources:
+  - url: https://judge.me/api/docs
+    type: APIReference
+    note: Documents REST base URL https://judge.me/api/v1 with shop_domain and api_token query params; no WebSocket mentioned.
+  - url: https://judge.me/help/en/articles/8409180-using-judge-me-api
+    type: Documentation
+    note: Describes reviews, products, and widget endpoints and public vs private API tokens; all HTTPS REST.
+  - url: https://judge.me/help/en/articles/8283047-setting-up-oauth
+    type: Documentation
+    note: OAuth 2.0 authorization-code flow (app.judge.me/oauth/authorize, judge.me/oauth/token) with scoped access; no streaming surface.
+  - url: https://judge.me/help/en/articles/8299679-verifying-webhooks-from-judge-me
+    type: Documentation
+    note: Webhooks are outbound HTTP POST callbacks verified via HMAC signature, not WebSocket.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists, and asynchronous delivery is via
+    outbound HTTP webhook callbacks rather than a client-subscribed stream, so
+    no AsyncAPI document was authored. The apis.yml catalogs the REST, OAuth,
+    and webhook surfaces with HTTPS transport throughout.

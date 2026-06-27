@@ -1,0 +1,86 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Judge.me
+providerId: judge-me
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: true
+tags:
+- Reviews
+- E-commerce
+- Shopify
+- Ratings
+- Social Proof
+- Plans
+description: >-
+  Judge.me uses a simple two-plan, flat-fee model with no scaling costs. The
+  Forever Free plan covers unlimited review requests plus photo and video
+  reviews and SEO rich snippets at no cost. The Awesome plan is a flat $15 USD
+  per month - the most a store can ever pay - and unlocks site reviews, Q&A,
+  custom forms, coupons, AI features, product grouping, Mailchimp sync, Google
+  Shopping syndication, and no Judge.me branding. The REST API is available on
+  both plans and is not separately metered.
+notes: >-
+  Pricing is per store. A 15-day free trial of the Awesome plan is offered.
+  Verify the current plan feature lists on the Judge.me pricing page during
+  reconciliation.
+sources:
+- https://judge.me/pricing
+- https://judge.me/help/en/articles/8415450-judge-me-awesome-plan
+plans:
+- id: judge-me-forever-free
+  name: Forever Free
+  type: free
+  description: >-
+    No-cost plan with unlimited review requests, photo and video reviews, and
+    SEO-optimized rich snippets, plus full REST API access.
+  entries:
+  - label: Monthly Price
+    name: monthly_price
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: Unlimited Review Requests
+  - name: Photo and Video Reviews
+  - name: Star Ratings
+  - name: SEO Rich Snippets
+  - name: REST API Access
+- id: judge-me-awesome
+  name: Awesome
+  type: paid
+  description: >-
+    Flat $15/month plan adding site reviews, Q&A, custom forms, coupons, AI
+    features, product grouping, Mailchimp sync, Google Shopping syndication,
+    and removal of Judge.me branding. $15 is the maximum a store can ever pay.
+  entries:
+  - label: Monthly Price
+    name: monthly_price
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $15 per month
+    userMultiplied: false
+  elements:
+  - name: Everything in Forever Free
+  - name: Site Reviews
+  - name: Q&A
+  - name: Custom Forms
+  - name: Coupons
+  - name: AI Features
+  - name: Product Grouping
+  - name: Mailchimp Sync
+  - name: Google Shopping Syndication
+  - name: No Judge.me Branding
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

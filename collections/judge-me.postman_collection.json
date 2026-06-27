@@ -1,0 +1,178 @@
+{
+  "info": {
+    "_postman_id": "b7e1c4a2-3d56-49f8-9a1b-judgeme000001",
+    "name": "Judge.me API",
+    "description": "REST API for the Judge.me product reviews platform. Authenticated with shop_domain and api_token query parameters. Use the public token for GET widget calls and the private token server-side for read/write.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://judge.me/api/v1"
+    },
+    {
+      "key": "shopDomain",
+      "value": "example.myshopify.com"
+    },
+    {
+      "key": "apiToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Reviews",
+      "description": "List and create product and store reviews.",
+      "item": [
+        {
+          "name": "List reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reviews?shop_domain={{shopDomain}}&api_token={{apiToken}}&page=1&per_page=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["reviews"],
+              "query": [
+                { "key": "shop_domain", "value": "{{shopDomain}}" },
+                { "key": "api_token", "value": "{{apiToken}}" },
+                { "key": "page", "value": "1" },
+                { "key": "per_page", "value": "10" },
+                { "key": "product_id", "value": "", "disabled": true },
+                { "key": "rating", "value": "", "disabled": true }
+              ]
+            },
+            "description": "Retrieve published reviews for the store, optionally filtered by product_id and rating, with pagination. Response excludes video URLs and replies."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a review",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"rating\": 5,\n  \"title\": \"Great product\",\n  \"body\": \"Highly recommend.\",\n  \"platform\": \"shopify\",\n  \"id\": \"123456789\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reviews?shop_domain={{shopDomain}}&api_token={{apiToken}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["reviews"],
+              "query": [
+                { "key": "shop_domain", "value": "{{shopDomain}}" },
+                { "key": "api_token", "value": "{{apiToken}}" }
+              ]
+            },
+            "description": "Programmatically create or import a review for a product or the store. Requires a private api_token. API-created reviews cannot be marked verified or deleted via the API."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "description": "Resolve external product ids/handles to internal Judge.me product ids.",
+      "item": [
+        {
+          "name": "Look up internal product id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/-1?shop_domain={{shopDomain}}&api_token={{apiToken}}&handle=my-product",
+              "host": ["{{baseUrl}}"],
+              "path": ["products", "-1"],
+              "query": [
+                { "key": "shop_domain", "value": "{{shopDomain}}" },
+                { "key": "api_token", "value": "{{apiToken}}" },
+                { "key": "handle", "value": "my-product" },
+                { "key": "external_id", "value": "", "disabled": true }
+              ]
+            },
+            "description": "Resolve an external product id or handle into the internal Judge.me product id used by the reviews endpoints."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Widgets",
+      "description": "Ready-to-render review widget HTML.",
+      "item": [
+        {
+          "name": "Get product review widget HTML",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/widgets/product_review?shop_domain={{shopDomain}}&api_token={{apiToken}}&product_id=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["widgets", "product_review"],
+              "query": [
+                { "key": "shop_domain", "value": "{{shopDomain}}" },
+                { "key": "api_token", "value": "{{apiToken}}" },
+                { "key": "product_id", "value": "1" }
+              ]
+            },
+            "description": "Return sanitized, ready-to-render product review widget HTML. Use a public api_token."
+          },
+          "response": []
+        },
+        {
+          "name": "Get preview badge widget HTML",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/widgets/preview_badge?shop_domain={{shopDomain}}&api_token={{apiToken}}&product_id=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["widgets", "preview_badge"],
+              "query": [
+                { "key": "shop_domain", "value": "{{shopDomain}}" },
+                { "key": "api_token", "value": "{{apiToken}}" },
+                { "key": "product_id", "value": "1" }
+              ]
+            },
+            "description": "Return preview badge HTML showing a product's average star rating and review count. Use a public api_token."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Review Requests",
+      "description": "Trigger review request emails to customers.",
+      "item": [
+        {
+          "name": "Send a manual review request",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"order_123\",\n  \"email\": \"jane@example.com\",\n  \"name\": \"Jane Doe\",\n  \"platform\": \"shopify\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/send_manual_review_request?shop_domain={{shopDomain}}&api_token={{apiToken}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["orders", "send_manual_review_request"],
+              "query": [
+                { "key": "shop_domain", "value": "{{shopDomain}}" },
+                { "key": "api_token", "value": "{{apiToken}}" }
+              ]
+            },
+            "description": "Trigger a review request email to a customer for a given order. Requires a private api_token."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

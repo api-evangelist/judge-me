@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Judge.me
+providerId: judge-me
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: false
+tags:
+- Reviews
+- E-commerce
+- Shopify
+- Ratings
+- Social Proof
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Judge.me applies per-shop throttling on its REST API to protect the platform,
+  but does not publish specific request-per-minute or per-day numbers in its
+  public API documentation. Clients should expect HTTP 429 responses under heavy
+  load - particularly when paginating large review exports - and should page
+  conservatively and back off when throttled. Specific limit values are not
+  reconciled in this artifact.
+notes: >-
+  Confirm any documented or observed per-shop limits and 429 behavior during
+  reconciliation; values are not published on the public API docs as of the
+  creation date.
+sources:
+- https://judge.me/api/docs
+- https://judge.me/help/en/articles/8409180-using-judge-me-api
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests Per Shop
+  scope: shop
+  metric: requests
+  limit: see provider documentation
+  notes: Per-shop_domain throttling; specific values not published.
+- name: Review Export Pagination
+  scope: shop
+  metric: requests
+  limit: see provider documentation
+  notes: Large bulk review exports should be paginated conservatively to avoid throttling.
+policies:
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter on HTTP 429 and honor any Retry-After header.
+- name: Token Separation
+  description: Use the public token only for GET widget calls and the private token server-side; do not expose the private token in client code.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

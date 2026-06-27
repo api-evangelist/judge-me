@@ -1,0 +1,77 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Judge.me
+providerId: judge-me
+created: '2026-06-25'
+modified: '2026-06-25'
+reconciled: true
+tags:
+- Reviews
+- E-commerce
+- Shopify
+- Ratings
+- Social Proof
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Judge.me spend. Judge.me bills a flat per-store subscription:
+  the Forever Free plan is $0 and the Awesome plan is a flat $15 USD per month,
+  which is the maximum a store can ever pay. There is no usage-based metering of
+  API calls, reviews collected, or widget loads, so cost is fully predictable
+  per store and the only optimization lever is whether each store needs the
+  Awesome feature set.
+notes: >-
+  Cost is a flat monthly subscription per store, not metered by API usage.
+  Verify current plan pricing on the Judge.me pricing page during
+  reconciliation.
+sources:
+- https://judge.me/pricing
+- https://judge.me/help/en/articles/8415450-judge-me-awesome-plan
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Judge.me
+serviceCategory: Marketing and Commerce
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Judge.me Product Reviews
+  ServiceCategory: Marketing and Commerce
+  ProviderName: Judge.me
+  PublisherName: Judge.me
+  InvoiceIssuerName: Judge.me
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: plan_subscription
+  description: Flat monthly subscription per store (Forever Free $0 or Awesome $15/month).
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - shop
+  - plan
+principles:
+- name: Visibility
+  description: Track which stores are on the Awesome plan versus Forever Free to see total monthly subscription spend.
+- name: Allocation
+  description: Map each Judge.me store subscription to the storefront / brand it supports.
+- name: Optimization
+  description: Keep stores on Forever Free unless they need Awesome features (site reviews, Q&A, Google Shopping syndication, no branding); $15/month is the hard ceiling.
+- name: Accountability
+  description: Assign an owner per store subscription and review monthly whether the Awesome features are still being used.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

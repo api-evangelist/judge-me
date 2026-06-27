@@ -1,0 +1,125 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Judge.me API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "in": "query",
+        "key": "api_token",
+        "value": "{{apiToken}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reviews",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/reviews?shop_domain={{shopDomain}}&api_token={{apiToken}}"
+          },
+          "docs": "Retrieve published reviews for the store, optionally filtered by product_id, rating, and paginated with page and per_page."
+        },
+        {
+          "info": {
+            "name": "Create a review",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://judge.me/api/v1/reviews?shop_domain={{shopDomain}}&api_token={{apiToken}}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"rating\": 5,\n  \"title\": \"Great product\",\n  \"body\": \"Highly recommend.\",\n  \"platform\": \"shopify\",\n  \"id\": \"123456789\"\n}"
+            }
+          },
+          "docs": "Programmatically create or import a review for a product or the store. Requires a private api_token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up internal product id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/products/-1?shop_domain={{shopDomain}}&api_token={{apiToken}}&handle=my-product"
+          },
+          "docs": "Resolve an external product id or handle into the internal Judge.me product id used by the reviews endpoints."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Widgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get product review widget HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/widgets/product_review?shop_domain={{shopDomain}}&api_token={{apiToken}}&product_id=1"
+          },
+          "docs": "Return sanitized, ready-to-render product review widget HTML. Use a public api_token."
+        },
+        {
+          "info": {
+            "name": "Get preview badge widget HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/widgets/preview_badge?shop_domain={{shopDomain}}&api_token={{apiToken}}&product_id=1"
+          },
+          "docs": "Return preview badge HTML showing a product's average star rating and review count. Use a public api_token."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Review Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a manual review request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://judge.me/api/v1/orders/send_manual_review_request?shop_domain={{shopDomain}}&api_token={{apiToken}}",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"id\": \"order_123\",\n  \"email\": \"jane@example.com\",\n  \"name\": \"Jane Doe\",\n  \"platform\": \"shopify\"\n}"
+            }
+          },
+          "docs": "Trigger a review request email to a customer for a given order. Requires a private api_token."
+        }
+      ]
+    }
+  ]
+}

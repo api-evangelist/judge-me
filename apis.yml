@@ -1,0 +1,167 @@
+aid: judge-me
+url: https://raw.githubusercontent.com/api-evangelist/judge-me/refs/heads/main/apis.yml
+name: Judge.me
+kind: company
+description: Judge.me is a product reviews platform for Shopify and other e-commerce
+  storefronts, collecting photo and video reviews, star ratings, site reviews, and
+  Q&A. The Judge.me REST API at https://judge.me/api/v1 lets developers list and
+  import reviews, fetch ready-to-render widget HTML, resolve products, send review
+  requests, and build OAuth apps authenticated with a shop_domain plus public or
+  private api_token.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Reviews
+- E-commerce
+- Shopify
+- Ratings
+- Social Proof
+created: '2026-06-25'
+modified: '2026-06-25'
+specificationVersion: '0.19'
+apis:
+- aid: judge-me:judge-me-reviews-api
+  name: Judge.me Reviews API
+  tags:
+  - Reviews
+  - Ratings
+  - Import
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://judge.me/api/docs
+  baseURL: https://judge.me/api/v1
+  properties:
+  - url: https://judge.me/help/en/articles/8409180-using-judge-me-api
+    type: Documentation
+  - url: https://judge.me/api/docs
+    type: APIReference
+  - url: openapi/judge-me-openapi.yml
+    type: OpenAPI
+  - url: collections/judge-me.postman_collection.json
+    type: PostmanCollection
+  - url: collections/judge-me.opencollection.json
+    type: OpenCollection
+  description: List published reviews with pagination and filtering for bulk export,
+    and programmatically create reviews with a reviewer name, email, rating, title,
+    and body against a product or the store, using a private api_token and shop_domain.
+- aid: judge-me:judge-me-reviewers-api
+  name: Judge.me Reviewers API
+  tags:
+  - Reviewers
+  - Customers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://judge.me/api/docs
+  baseURL: https://judge.me/api/v1
+  properties:
+  - url: https://judge.me/help/en/articles/8409180-using-judge-me-api
+    type: Documentation
+  - url: openapi/judge-me-openapi.yml
+    type: OpenAPI
+  - url: collections/judge-me.postman_collection.json
+    type: PostmanCollection
+  - url: collections/judge-me.opencollection.json
+    type: OpenCollection
+  description: Reviewer data - the customers who have left reviews, including name,
+    email, and external id - is returned inline on review records and gated by the
+    read_reviewers and write_reviewers OAuth scopes for apps syncing contacts into
+    an external system.
+- aid: judge-me:judge-me-products-api
+  name: Judge.me Products API
+  tags:
+  - Products
+  - Mapping
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://judge.me/api/docs
+  baseURL: https://judge.me/api/v1
+  properties:
+  - url: https://judge.me/help/en/articles/8409180-using-judge-me-api
+    type: Documentation
+  - url: openapi/judge-me-openapi.yml
+    type: OpenAPI
+  - url: collections/judge-me.postman_collection.json
+    type: PostmanCollection
+  - url: collections/judge-me.opencollection.json
+    type: OpenCollection
+  description: Resolve products by converting an external (platform) product handle
+    or id into an internal Judge.me product id via the /products/-1 lookup, the same
+    id used to scope review queries to a single product.
+- aid: judge-me:judge-me-widgets-api
+  name: Judge.me Widgets API
+  tags:
+  - Widgets
+  - HTML
+  - Display
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://judge.me/api/docs
+  baseURL: https://judge.me/api/v1
+  properties:
+  - url: https://judge.me/help/en/articles/8409180-using-judge-me-api
+    type: Documentation
+  - url: openapi/judge-me-openapi.yml
+    type: OpenAPI
+  - url: collections/judge-me.postman_collection.json
+    type: PostmanCollection
+  - url: collections/judge-me.opencollection.json
+    type: OpenCollection
+  description: Return sanitized, XSS-safe, ready-to-render review widget HTML - such
+    as the product review widget and the preview badge showing average star rating
+    and review count - usable from public JavaScript environments with a public
+    api_token.
+- aid: judge-me:judge-me-oauth-api
+  name: Judge.me OAuth API
+  tags:
+  - OAuth
+  - Authentication
+  - Authorization
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://judge.me/help/en/articles/8283047-setting-up-oauth
+  baseURL: https://judge.me/oauth
+  properties:
+  - url: https://judge.me/help/en/articles/8283047-setting-up-oauth
+    type: Documentation
+  - url: openapi/judge-me-openapi.yml
+    type: OpenAPI
+  - url: collections/judge-me.postman_collection.json
+    type: PostmanCollection
+  - url: collections/judge-me.opencollection.json
+    type: OpenCollection
+  description: Standard OAuth 2.0 authorization-code flow at app.judge.me/oauth/authorize
+    and judge.me/oauth/token letting third-party apps request scoped access
+    (read/write shops, widgets, orders, products, reviewers, reviews, settings) on
+    behalf of a Judge.me store.
+- aid: judge-me:judge-me-webhooks-api
+  name: Judge.me Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://judge.me/api/docs
+  baseURL: https://judge.me/api/v1
+  properties:
+  - url: https://judge.me/help/en/articles/8278390-build-integrations-with-judge-me
+    type: Documentation
+  - url: https://judge.me/help/en/articles/8299679-verifying-webhooks-from-judge-me
+    type: APIReference
+  - url: openapi/judge-me-openapi.yml
+    type: OpenAPI
+  - url: collections/judge-me.postman_collection.json
+    type: PostmanCollection
+  - url: collections/judge-me.opencollection.json
+    type: OpenCollection
+  description: Subscribe to events so Judge.me POSTs to your URL on review lifecycle
+    events - review/created, review/updated, review/published, review/unpublished -
+    and widget settings updates, with an HMAC signature you can verify on receipt.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/judge-me
+- type: Website
+  url: https://judge.me/
+- type: Documentation
+  url: https://judge.me/api/docs
+- type: Plans
+  url: plans/judge-me-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/judge-me-rate-limits.yml
+- type: FinOps
+  url: finops/judge-me-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
