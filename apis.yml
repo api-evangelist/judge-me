@@ -150,6 +150,10 @@ apis:
     events - review/created, review/updated, review/published, review/unpublished -
     and widget settings updates, with an HMAC signature you can verify on receipt.
 common:
+- type: DomainSecurity
+  url: security/judge-me-domain-security.yml
+- type: Authentication
+  url: authentication/judge-me-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/judge-me
 - type: Website

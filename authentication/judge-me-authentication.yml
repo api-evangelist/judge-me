@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/judge-me-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiToken
+  type: apiKey
+  in: query
+  parameter: api_token
+  description: Public or private Judge.me API token passed as a query parameter.
+  sources:
+  - openapi/judge-me-openapi.yml
+- name: shopDomain
+  type: apiKey
+  in: query
+  parameter: shop_domain
+  description: The store's myshopify.com domain passed as a query parameter.
+  sources:
+  - openapi/judge-me-openapi.yml
