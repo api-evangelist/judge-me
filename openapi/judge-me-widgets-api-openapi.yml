@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Judge.me Products Widgets API
+  description: REST API for the Judge.me product reviews platform for Shopify and other e-commerce storefronts. Endpoints let you list and create reviews, resolve products, send review request emails, and fetch ready-to-render review widget HTML. Requests are authenticated with a shop_domain and an api_token query parameter. A public api_token may be used for GET widget calls in public JavaScript environments; a private api_token grants read/write access and must be used server-side only.
+  termsOfService: https://judge.me/terms
+  contact:
+    name: Judge.me Support
+    url: https://judge.me/api/docs
+    email: support@judge.me
+  version: '1.0'
+servers:
+- url: https://judge.me/api/v1
+  description: Judge.me API v1
+security:
+- shopDomain: []
+  apiToken: []
+tags:
+- name: Widgets
+  description: Ready-to-render review widget HTML.
+paths:
+  /widgets/product_review:
+    get:
+      operationId: getProductReviewWidget
+      tags:
+      - Widgets
+      summary: Get product review widget HTML
+      description: Return sanitized, XSS-safe, ready-to-render HTML for the product review widget for a given product. Intended for use with a public api_token in public JavaScript environments.
+      parameters:
+      - name: shop_domain
+        in: query
+        required: true
+        description: The store's myshopify.com domain.
+        schema:
+          type: string
+      - name: api_token
+        in: query
+        required: true
+        description: Public Judge.me API token.
+        schema:
+          type: string
+      - name: product_id
+        in: query
+        required: true
+        description: Internal Judge.me product id.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Widget HTML and supporting markup.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WidgetResponse'
+  /widgets/preview_badge:
+    get:
+      operationId: getPreviewBadgeWidget
+      tags:
+      - Widgets
+      summary: Get preview badge widget HTML
+      description: Return ready-to-render HTML for the preview badge showing a product's average star rating and review count, for product pages or collection thumbnails.
+      parameters:
+      - name: shop_domain
+        in: query
+        required: true
+        description: The store's myshopify.com domain.
+        schema:
+          type: string
+      - name: api_token
+        in: query
+        required: true
+        description: Public Judge.me API token.
+        schema:
+          type: string
+      - name: product_id
+        in: query
+        required: true
+        description: Internal Judge.me product id.
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Preview badge HTML.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WidgetResponse'
+components:
+  schemas:
+    WidgetResponse:
+      type: object
+      properties:
+        widget:
+          type: string
+          description: Sanitized, ready-to-render widget HTML.
+  securitySchemes:
+    apiToken:
+      type: apiKey
+      in: query
+      name: api_token
+      description: Public or private Judge.me API token passed as a query parameter.
+    shopDomain:
+      type: apiKey
+      in: query
+      name: shop_domain
+      description: The store's myshopify.com domain passed as a query parameter.

@@ -1,0 +1,81 @@
+openapi: 3.0.1
+info:
+  title: Judge.me Products Review Requests API
+  description: REST API for the Judge.me product reviews platform for Shopify and other e-commerce storefronts. Endpoints let you list and create reviews, resolve products, send review request emails, and fetch ready-to-render review widget HTML. Requests are authenticated with a shop_domain and an api_token query parameter. A public api_token may be used for GET widget calls in public JavaScript environments; a private api_token grants read/write access and must be used server-side only.
+  termsOfService: https://judge.me/terms
+  contact:
+    name: Judge.me Support
+    url: https://judge.me/api/docs
+    email: support@judge.me
+  version: '1.0'
+servers:
+- url: https://judge.me/api/v1
+  description: Judge.me API v1
+security:
+- shopDomain: []
+  apiToken: []
+tags:
+- name: Review Requests
+  description: Trigger review request emails to customers.
+paths:
+  /orders/send_manual_review_request:
+    post:
+      operationId: sendManualReviewRequest
+      tags:
+      - Review Requests
+      summary: Send a manual review request
+      description: Trigger a review request email to a customer for a given order. Requires a private api_token.
+      parameters:
+      - name: shop_domain
+        in: query
+        required: true
+        description: The store's myshopify.com domain.
+        schema:
+          type: string
+      - name: api_token
+        in: query
+        required: true
+        description: Private Judge.me API token.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewRequest'
+      responses:
+        '200':
+          description: The review request was queued.
+        '401':
+          description: Missing or invalid private api_token.
+components:
+  schemas:
+    ReviewRequest:
+      type: object
+      required:
+      - id
+      - email
+      properties:
+        id:
+          type: string
+          description: External order id.
+        email:
+          type: string
+          description: Customer email to send the review request to.
+        name:
+          type: string
+        platform:
+          type: string
+          description: Source platform, e.g. shopify.
+  securitySchemes:
+    apiToken:
+      type: apiKey
+      in: query
+      name: api_token
+      description: Public or private Judge.me API token passed as a query parameter.
+    shopDomain:
+      type: apiKey
+      in: query
+      name: shop_domain
+      description: The store's myshopify.com domain passed as a query parameter.
