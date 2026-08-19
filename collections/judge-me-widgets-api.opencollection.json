@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Judge.me Products Widgets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "shop_domain",
+      "value": "{{shop_domain}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Widgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get product review widget HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/widgets/product_review",
+            "params": [
+              {
+                "name": "shop_domain",
+                "value": "",
+                "type": "query",
+                "description": "The store's myshopify.com domain."
+              },
+              {
+                "name": "api_token",
+                "value": "",
+                "type": "query",
+                "description": "Public Judge.me API token."
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Internal Judge.me product id."
+              }
+            ]
+          },
+          "docs": "Return sanitized, XSS-safe, ready-to-render HTML for the product review widget for a given product. Intended for use with a public api_token in public JavaScript environments."
+        },
+        {
+          "info": {
+            "name": "Get preview badge widget HTML",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/widgets/preview_badge",
+            "params": [
+              {
+                "name": "shop_domain",
+                "value": "",
+                "type": "query",
+                "description": "The store's myshopify.com domain."
+              },
+              {
+                "name": "api_token",
+                "value": "",
+                "type": "query",
+                "description": "Public Judge.me API token."
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "query",
+                "description": "Internal Judge.me product id."
+              }
+            ]
+          },
+          "docs": "Return ready-to-render HTML for the preview badge showing a product's average star rating and review count, for product pages or collection thumbnails."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

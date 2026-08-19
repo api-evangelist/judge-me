@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "17b28045-f30b-4b52-b371-db7ce9075fa2",
+      "name": "Products",
+      "description": {
+        "content": "Resolve external product handles or ids to internal Judge.me product ids.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35d142d7-319c-499c-b04b-718b8332216e",
+          "name": "Look up internal product id",
+          "request": {
+            "name": "Look up internal product id",
+            "description": {
+              "content": "Resolve an external (platform) product id or product handle into the internal Judge.me product id used by the reviews endpoints.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                "-1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shop_domain",
+                  "value": "<string>",
+                  "description": "(Required) The store's myshopify.com domain."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_token",
+                  "value": "<string>",
+                  "description": "(Required) Public or private Judge.me API token."
+                },
+                {
+                  "disabled": false,
+                  "key": "external_id",
+                  "value": "<string>",
+                  "description": "External (platform) product id to resolve."
+                },
+                {
+                  "disabled": false,
+                  "key": "handle",
+                  "value": "<string>",
+                  "description": "Product handle to resolve."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5704ee07-e081-4d59-b73d-c66aeeb5b1df",
+              "name": "The resolved product with its internal Judge.me id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shop_domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "handle",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shop_domain",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"product\": {\n    \"id\": 4770,\n    \"handle\": \"string\",\n    \"external_id\": \"string\",\n    \"title\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c08ac00-e219-4a79-858d-34c3dc54919e",
+              "name": "No matching product found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "-1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shop_domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "external_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "handle",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "shop_domain",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://judge.me/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "shop_domain"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4899b62f-fa8e-4063-85fe-201e7c82d454",
+    "name": "Judge.me Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Judge.me product reviews platform for Shopify and other e-commerce storefronts. Endpoints let you list and create reviews, resolve products, send review request emails, and fetch ready-to-render review widget HTML. Requests are authenticated with a shop_domain and an api_token query parameter. A public api_token may be used for GET widget calls in public JavaScript environments; a private api_token grants read/write access and must be used server-side only.\n\nContact Support:\n Name: Judge.me Support\n Email: support@judge.me",
+      "type": "text/plain"
+    }
+  }
+}

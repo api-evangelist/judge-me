@@ -1,0 +1,265 @@
+{
+  "item": [
+    {
+      "id": "a2a0256a-61f5-4af2-badc-8eb45f55192b",
+      "name": "Widgets",
+      "description": {
+        "content": "Ready-to-render review widget HTML.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0224424f-2f4c-45b4-ae64-05293d58ffa0",
+          "name": "Get product review widget HTML",
+          "request": {
+            "name": "Get product review widget HTML",
+            "description": {
+              "content": "Return sanitized, XSS-safe, ready-to-render HTML for the product review widget for a given product. Intended for use with a public api_token in public JavaScript environments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "product_review"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shop_domain",
+                  "value": "<string>",
+                  "description": "(Required) The store's myshopify.com domain."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_token",
+                  "value": "<string>",
+                  "description": "(Required) Public Judge.me API token."
+                },
+                {
+                  "disabled": false,
+                  "key": "product_id",
+                  "value": "<integer>",
+                  "description": "(Required) Internal Judge.me product id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a5b66c2-30ff-416b-badb-480843471e26",
+              "name": "Widget HTML and supporting markup.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "product_review"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shop_domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "shop_domain",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"widget\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78e154dd-5d92-4196-a889-183f3b854e5f",
+          "name": "Get preview badge widget HTML",
+          "request": {
+            "name": "Get preview badge widget HTML",
+            "description": {
+              "content": "Return ready-to-render HTML for the preview badge showing a product's average star rating and review count, for product pages or collection thumbnails.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "widgets",
+                "preview_badge"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "shop_domain",
+                  "value": "<string>",
+                  "description": "(Required) The store's myshopify.com domain."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_token",
+                  "value": "<string>",
+                  "description": "(Required) Public Judge.me API token."
+                },
+                {
+                  "disabled": false,
+                  "key": "product_id",
+                  "value": "<integer>",
+                  "description": "(Required) Internal Judge.me product id."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac2bf0fe-29d5-4a9f-9440-4aafb327b7db",
+              "name": "Preview badge HTML.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "widgets",
+                    "preview_badge"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "shop_domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "shop_domain",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"widget\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://judge.me/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "shop_domain"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "11d08792-9d65-40f1-9ed9-cce390c2e205",
+    "name": "Judge.me Products Widgets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Judge.me product reviews platform for Shopify and other e-commerce storefronts. Endpoints let you list and create reviews, resolve products, send review request emails, and fetch ready-to-render review widget HTML. Requests are authenticated with a shop_domain and an api_token query parameter. A public api_token may be used for GET widget calls in public JavaScript environments; a private api_token grants read/write access and must be used server-side only.\n\nContact Support:\n Name: Judge.me Support\n Email: support@judge.me",
+      "type": "text/plain"
+    }
+  }
+}

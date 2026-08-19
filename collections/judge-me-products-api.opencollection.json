@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Judge.me Products API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "shop_domain",
+      "value": "{{shop_domain}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Look up internal product id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://judge.me/api/v1/products/-1",
+            "params": [
+              {
+                "name": "shop_domain",
+                "value": "",
+                "type": "query",
+                "description": "The store's myshopify.com domain."
+              },
+              {
+                "name": "api_token",
+                "value": "",
+                "type": "query",
+                "description": "Public or private Judge.me API token."
+              },
+              {
+                "name": "external_id",
+                "value": "",
+                "type": "query",
+                "description": "External (platform) product id to resolve."
+              },
+              {
+                "name": "handle",
+                "value": "",
+                "type": "query",
+                "description": "Product handle to resolve."
+              }
+            ]
+          },
+          "docs": "Resolve an external (platform) product id or product handle into the internal Judge.me product id used by the reviews endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
