@@ -8,6 +8,18 @@ description: Judge.me is a product reviews platform for Shopify and other e-comm
   import reviews, fetch ready-to-render widget HTML, resolve products, send review
   requests, and build OAuth apps authenticated with a shop_domain plus public or
   private api_token.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
