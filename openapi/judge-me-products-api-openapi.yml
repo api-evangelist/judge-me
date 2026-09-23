@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Judge.me Products API
   description: REST API for the Judge.me product reviews platform for Shopify and other e-commerce storefronts. Endpoints let you list and create reviews, resolve products, send review request emails, and fetch ready-to-render review widget HTML. Requests are authenticated with a shop_domain and an api_token query parameter. A public api_token may be used for GET widget calls in public JavaScript environments; a private api_token grants read/write access and must be used server-side only.

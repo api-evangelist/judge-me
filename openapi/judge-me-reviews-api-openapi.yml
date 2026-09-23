@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Judge.me Products Reviews API
+  title: Judge.me Reviews API
   description: REST API for the Judge.me product reviews platform for Shopify and other e-commerce storefronts. Endpoints let you list and create reviews, resolve products, send review request emails, and fetch ready-to-render review widget HTML. Requests are authenticated with a shop_domain and an api_token query parameter. A public api_token may be used for GET widget calls in public JavaScript environments; a private api_token grants read/write access and must be used server-side only.
   termsOfService: https://judge.me/terms
   contact:
@@ -113,6 +113,28 @@ paths:
           description: Validation error in the review payload.
 components:
   schemas:
+    Reviewer:
+      type: object
+      properties:
+        id:
+          type: integer
+        external_id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+        phone:
+          type: string
+        accepts_marketing:
+          type: boolean
+        unsubscribed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        tags:
+          type: string
     Review:
       type: object
       properties:
@@ -205,27 +227,6 @@ components:
           type: array
           items:
             type: string
-    Reviewer:
-      type: object
-      properties:
-        id:
-          type: integer
-        external_id:
-          type: string
-        email:
-          type: string
-        name:
-          type: string
-        phone:
-          type: string
-        accepts_marketing:
-          type: boolean
-        unsubscribed_at:
-          type: string
-          format: date-time
-          nullable: true
-        tags:
-          type: string
   securitySchemes:
     apiToken:
       type: apiKey
