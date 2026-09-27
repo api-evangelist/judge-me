@@ -113,6 +113,51 @@ paths:
           description: Validation error in the review payload.
 components:
   schemas:
+    CreateReviewRequest:
+      type: object
+      required:
+      - name
+      - email
+      - rating
+      properties:
+        name:
+          type: string
+          description: Reviewer display name.
+        email:
+          type: string
+          description: Reviewer email address.
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        title:
+          type: string
+        body:
+          type: string
+        platform:
+          type: string
+          description: Source platform, e.g. shopify.
+        id:
+          type: string
+          description: External product id the review is for; omit for a store review.
+        url:
+          type: string
+          description: Product URL.
+        picture_urls:
+          type: array
+          items:
+            type: string
+    ReviewList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        per_page:
+          type: integer
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
     Reviewer:
       type: object
       properties:
@@ -182,51 +227,6 @@ components:
                 type: object
                 additionalProperties:
                   type: string
-    ReviewList:
-      type: object
-      properties:
-        current_page:
-          type: integer
-        per_page:
-          type: integer
-        reviews:
-          type: array
-          items:
-            $ref: '#/components/schemas/Review'
-    CreateReviewRequest:
-      type: object
-      required:
-      - name
-      - email
-      - rating
-      properties:
-        name:
-          type: string
-          description: Reviewer display name.
-        email:
-          type: string
-          description: Reviewer email address.
-        rating:
-          type: integer
-          minimum: 1
-          maximum: 5
-        title:
-          type: string
-        body:
-          type: string
-        platform:
-          type: string
-          description: Source platform, e.g. shopify.
-        id:
-          type: string
-          description: External product id the review is for; omit for a store review.
-        url:
-          type: string
-          description: Product URL.
-        picture_urls:
-          type: array
-          items:
-            type: string
   securitySchemes:
     apiToken:
       type: apiKey
