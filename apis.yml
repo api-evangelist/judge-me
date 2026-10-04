@@ -150,6 +150,9 @@ apis:
   - type: APIReference
     url: https://judge.me/help/en/articles/8299679-verifying-webhooks-from-judge-me
 common:
+- type: CapabilityMap
+  url: capabilities/judge-me-capability-edges.yml
+  name: Judge.me Business Capability Map
 - type: AgenticAccess
   url: agentic-access/judge-me-agentic-access.yml
 - type: DomainSecurity
