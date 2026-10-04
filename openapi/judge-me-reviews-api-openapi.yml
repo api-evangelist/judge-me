@@ -160,6 +160,17 @@ components:
                 type: object
                 additionalProperties:
                   type: string
+    ReviewList:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        per_page:
+          type: integer
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
     CreateReviewRequest:
       type: object
       required:
@@ -216,17 +227,6 @@ components:
           format: date-time
         tags:
           type: string
-    ReviewList:
-      type: object
-      properties:
-        current_page:
-          type: integer
-        per_page:
-          type: integer
-        reviews:
-          type: array
-          items:
-            $ref: '#/components/schemas/Review'
   securitySchemes:
     apiToken:
       type: apiKey
