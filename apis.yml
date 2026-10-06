@@ -48,7 +48,7 @@ tags_raw:
 - Ratings
 - Social Proof
 created: '2026-06-25'
-modified: '2026-06-25'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: judge-me:judge-me-products-api
@@ -150,6 +150,8 @@ apis:
   - type: APIReference
     url: https://judge.me/help/en/articles/8299679-verifying-webhooks-from-judge-me
 common:
+- url: https://judge.me/blog
+  type: Blog
 - type: CapabilityMap
   url: capabilities/judge-me-capability-edges.yml
   name: Judge.me Business Capability Map
