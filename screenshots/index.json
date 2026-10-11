@@ -1,0 +1,11 @@
+[
+  {
+    "repo": "judge-me",
+    "captured_at": "2026-10-11T190805",
+    "source_url": "https://judge.me/",
+    "source_type": "Website",
+    "file": "judge-me-2026-10-11T190805.png",
+    "bytes": 203543,
+    "capture": "playwright-local"
+  }
+]
