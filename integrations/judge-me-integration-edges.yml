@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/judge-me/integrations
+- https://n8n.io/integrations/judge-me/
+- https://composio.dev/toolkits/judge-me
+- https://monid.ai/tools/judge-me
+checked:
+- https://composio.dev/toolkits/judge-me
+- https://monid.ai/tools/judge-me
+- https://n8n.io/integrations/judge-me/
+- https://zapier.com/apps/judge-me/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
