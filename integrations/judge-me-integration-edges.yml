@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/judge-me/integrations
 - https://n8n.io/integrations/judge-me/
@@ -10,7 +10,28 @@ checked:
 - https://monid.ai/tools/judge-me
 - https://n8n.io/integrations/judge-me/
 - https://zapier.com/apps/judge-me/integrations
+- shopify/integrations/shopify-integration-edges.yml
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/judgeme
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - Judge.me Product Reviews App
+  - Judge.me Ali Reviews Importer
+  - Judge.me Email Marketing
+  listing_count: 3
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  publisher_verified:
+  - Built for Shopify
 templates: []
