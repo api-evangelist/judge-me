@@ -18,8 +18,17 @@ checked:
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/judge-me/integrations
 - shopify/integrations/shopify-integration-edges.yml
+- https://judge.me/integrations
 summary: null
-marketplace_apps: []
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: judge-me
+  url: https://judge.me/integrations
+  app_count: 140
+  adapter: sweep-reviews-ugc.py:listing-pages
+  listed: 0
+  note: 140 listings read; only domain- / identity-linked partners are written
 edges:
 - partner_name: Airbyte
   partner: airbyte
