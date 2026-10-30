@@ -1,4 +1,4 @@
-# Judge.me (judge-me)
+# Judge.me
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,152 +66,119 @@
 
 Judge.me is a product reviews platform for Shopify and other e-commerce storefronts, collecting photo and video reviews, star ratings, site reviews, and Q&A. The Judge.me REST API at https://judge.me/api/v1 lets developers list and import reviews, fetch ready-to-render widget HTML, resolve products, send review requests, and build OAuth apps authenticated with a shop_domain plus public or private api_token.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/judge-me/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/judge-me/refs/heads/main/apis.yml)
+**Areas:** Reviews · E-Commerce · Shopify · Ratings · Social Proof
 
-## Tags
+## Judge.me on APIs.io
 
-- Reviews
-- E-commerce
-- Shopify
-- Ratings
-- Social Proof
+Everything profiled for Judge.me is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/judge-me/](https://apis.io/providers/judge-me/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-06-25
-- **Modified:** 2026-06-25
+- [Judge.me Products API](https://apis.io/apis/judge-me/judge-me-products-api/) — Resolve external product handles or ids to internal Judge.me product ids.
+- [Judge.me Review Requests API](https://apis.io/apis/judge-me/judge-me-review-requests-api/) — Trigger review request emails to customers.
+- [Judge.me Reviews API](https://apis.io/apis/judge-me/judge-me-reviews-api/) — List and create product and store reviews.
+- [Judge.me Widgets API](https://apis.io/apis/judge-me/judge-me-widgets-api/) — Ready-to-render review widget HTML.
 
-## APIs
+### Published properties
 
-### Judge.me Reviews API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-List published reviews with pagination and filtering for bulk export, and programmatically create reviews with a reviewer name, email, rating, title, and body against a product or the store, using a private api_token and shop_domain.
+#### Agentic access (1)
 
-- **Human URL:** [https://judge.me/api/docs](https://judge.me/api/docs)
-- **Base URL:** `https://judge.me/api/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Judge Me Agentic Access](https://apis.io/agentic-access/judge-me/judge-me-agentic-access/)
 
-- Reviews
-- Ratings
-- Import
+#### Collections (3)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://judge.me/help/en/articles/8409180-using-judge-me-api)
-- [API Reference](https://judge.me/api/docs)
-- [OpenAPI](openapi/judge-me-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/judge-me.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/judge-me.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Judge.me API](https://apis.io/collections/judge-me/open-judge-me/)
+- [Judge.me Products API](https://apis.io/collections/judge-me/open-judge-me-products-api/)
+- [Judge.me Products Widgets API](https://apis.io/collections/judge-me/open-judge-me-widgets-api/)
 
-### Judge.me Reviewers API
+#### Security (2)
 
-Reviewer data - the customers who have left reviews, including name, email, and external id - is returned inline on review records and gated by the read_reviewers and write_reviewers OAuth scopes for apps syncing contacts into an external system.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://judge.me/api/docs](https://judge.me/api/docs)
-- **Base URL:** `https://judge.me/api/v1`
+- [Judge Me Authentication](https://apis.io/security/judge-me/judge-me-authentication/)
+- [Judge Me Domain Security](https://apis.io/security/judge-me/judge-me-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Reviewers
-- Customers
+Published plans, tiers and prices.
 
-#### Properties
+- [Judge Me Plans Pricing](https://apis.io/plans/judge-me/judge-me-plans-pricing/)
 
-- [Documentation](https://judge.me/help/en/articles/8409180-using-judge-me-api)
-- [OpenAPI](openapi/judge-me-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/judge-me.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/judge-me.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Judge.me Products API
+Published request limits.
 
-Resolve products by converting an external (platform) product handle or id into an internal Judge.me product id via the /products/-1 lookup, the same id used to scope review queries to a single product.
+- [Judge Me Rate Limits](https://apis.io/rate-limits/judge-me/judge-me-rate-limits/)
 
-- **Human URL:** [https://judge.me/api/docs](https://judge.me/api/docs)
-- **Base URL:** `https://judge.me/api/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Products
-- Mapping
+- [Judge Me Finops](https://apis.io/finops/judge-me/judge-me-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://judge.me/help/en/articles/8409180-using-judge-me-api)
-- [OpenAPI](openapi/judge-me-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/judge-me.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/judge-me.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Judge.me Widgets API
-
-Return sanitized, XSS-safe, ready-to-render review widget HTML - such as the product review widget and the preview badge showing average star rating and review count - usable from public JavaScript environments with a public api_token.
-
-- **Human URL:** [https://judge.me/api/docs](https://judge.me/api/docs)
-- **Base URL:** `https://judge.me/api/v1`
-
-#### Tags
-
-- Widgets
-- HTML
-- Display
-
-#### Properties
-
-- [Documentation](https://judge.me/help/en/articles/8409180-using-judge-me-api)
-- [OpenAPI](openapi/judge-me-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/judge-me.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/judge-me.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Judge.me OAuth API
-
-Standard OAuth 2.0 authorization-code flow at app.judge.me/oauth/authorize and judge.me/oauth/token letting third-party apps request scoped access (read/write shops, widgets, orders, products, reviewers, reviews, settings) on behalf of a Judge.me store.
-
-- **Human URL:** [https://judge.me/help/en/articles/8283047-setting-up-oauth](https://judge.me/help/en/articles/8283047-setting-up-oauth)
-- **Base URL:** `https://judge.me/oauth`
-
-#### Tags
-
-- OAuth
-- Authentication
-- Authorization
-
-#### Properties
-
-- [Documentation](https://judge.me/help/en/articles/8283047-setting-up-oauth)
-- [OpenAPI](openapi/judge-me-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/judge-me.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/judge-me.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Judge.me Webhooks API
-
-Subscribe to events so Judge.me POSTs to your URL on review lifecycle events - review/created, review/updated, review/published, review/unpublished - and widget settings updates, with an HMAC signature you can verify on receipt.
-
-- **Human URL:** [https://judge.me/api/docs](https://judge.me/api/docs)
-- **Base URL:** `https://judge.me/api/v1`
-
-#### Tags
-
-- Webhooks
-- Events
-
-#### Properties
-
-- [Documentation](https://judge.me/help/en/articles/8278390-build-integrations-with-judge-me)
-- [API Reference](https://judge.me/help/en/articles/8299679-verifying-webhooks-from-judge-me)
-- [OpenAPI](openapi/judge-me-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/judge-me.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/judge-me.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/judge-me)
 - [Website](https://judge.me/)
 - [Documentation](https://judge.me/api/docs)
-- [Plans](plans/judge-me-plans-pricing.yml)
-- [Rate Limits](rate-limits/judge-me-rate-limits.yml)
-- [Fin Ops](finops/judge-me-finops.yml)
+- [Blog](https://judge.me/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.5** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/judge-me/](https://apis.io/providers/judge-me/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Judge.me: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/judge-me/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
